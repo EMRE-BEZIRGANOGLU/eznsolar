@@ -131,14 +131,14 @@ function Odeme({ ip }) {
 
   }
   const randomNumber = () => Math.trunc(Math.random() * 10);
-
-  const generateOrderId = ((item) => item.replace(/X/g, randomNumber));
   const input = `EZN60XXXXXXX${tc + Date()}`
+  const generateOrderId = ((item) => item.replace(/X/g, randomNumber));
+ 
 
   async function getPaytrIframe() {
     try {
       const user_ip = ip;
-      const merchant_id = 342098;
+      const merchant_id = "342098";
       const merchant_key = "eCKt71YGSWR6gKSk";
       const payment_amount = parseInt((total * 100).toFixed(0));
       const merchant_oid = generateOrderId(input);
@@ -165,6 +165,8 @@ function Odeme({ ip }) {
         merchant_oid: merchant_oid,
         user_ip: user_ip,
         user_phone: tel,
+        user_name:ad,
+        user_address:address,
         merchant_ok_url: "https://eznsolar.com/success",
         merchant_fail_url: "https://eznsolar.com/fail",
         user_basket: user_basket,
@@ -196,7 +198,7 @@ function Odeme({ ip }) {
     getPaytrIframe();
   };
 
-
+console.log("deneme",tokenPay);
   // async function verifyPay(req, res) {
   //   var callback = req.body;
   //   console.log("body", req.body);
